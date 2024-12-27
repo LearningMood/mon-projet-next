@@ -1,0 +1,11 @@
+// baseUrl: "." indique que la racine est le dossier courant (où se situe jsconfig.json).
+// paths : associe le préfixe @/ à votre dossier ./src/.
+{
+    "compilerOptions": {
+      "baseUrl": ".",
+      "paths": {
+        "@/*": ["./src/*"]
+      }
+    }
+  }
+  
