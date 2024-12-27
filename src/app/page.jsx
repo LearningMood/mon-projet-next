@@ -10,6 +10,7 @@ export default async function Home() {
   return (
     <div className={styles.page}>
       <main className={styles.main}>
+
         <BlocksRenderer content={content} />;
         <ol>
           <li>Save and see your changes instantly.</li>

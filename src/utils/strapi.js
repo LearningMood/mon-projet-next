@@ -1,5 +1,3 @@
-// lib/strapi.js
-
 const BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:1337'; 
 // Variable d’environnement à configurer pour pointer vers votre Strapi en prod
 
