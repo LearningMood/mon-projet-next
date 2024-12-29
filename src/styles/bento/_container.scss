@@ -1,0 +1,5 @@
+// @use 'mixins' as m;
+@use "variables" as v; // import breakpoints & containers maps
+@use "mixins" as m;    // import la mixin generate-containers
+
+@include m.generate-containers(v.$containers, v.$breakpoints);

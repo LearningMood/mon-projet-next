@@ -1,0 +1,26 @@
+:root {
+    --color-one: #1e40af;
+    --color-one-light: #3b82f6;
+    --color-one-dark: #1e3a8a;
+  
+    --color-two: #9333ea; 
+    --color-two-light: #a855f7;
+    --color-two-dark: #7e22ce;
+
+    --color-dark: #323439; 
+    --color-dark-light: #6c6c6d;
+    --color-dark-dark: #191e25;
+
+    --color-light: #f0f2f6;
+    --color-light-light: #6c6c6d;
+    --color-light-dark: #191e25;
+  
+    /* Feedback (états de succès, erreur, etc.) */
+    --color-success: rgb(183, 212, 126); /* Vert */
+    --color-warning: #f6df82; /* Jaune */
+    --color-error: #e2716b; /* Rouge */
+  
+    /* Autres couleurs */
+    --color-accent: #ff6b6b; /* Accentuation */
+  }
+  

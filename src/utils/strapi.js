@@ -6,9 +6,16 @@ const BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:1337';
  * @param {string} endpoint - Par exemple "/api/homepage" ou "/api/articles"
  * @param {object} [options] - Options à passer à fetch (méthode, headers, body, etc.)
  */
-export async function getStrapiData(endpoint, options = {}) {
+// export async function getStrapiData(endpoint, options = {}) {
+  export async function getStrapiData(endpoint, { queryParams = {}, options = {} } = {}) {
+  // Ajout options
+  // Construire la query string
+  const queryString = new URLSearchParams(queryParams).toString();
+  const url = `${BASE_URL}${endpoint}${queryString ? `?${queryString}` : ''}`;
+
   try {
-    const res = await fetch(`${BASE_URL}${endpoint}`, {
+    // const res = await fetch(`${BASE_URL}${endpoint}`, {
+    const res = await fetch(url, {
       ...options,
       // Exemple : next: { revalidate: 10 } si vous souhaitez de l'ISR en Next 13
       next: { revalidate: 60 }, 

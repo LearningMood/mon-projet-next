@@ -1,0 +1,29 @@
+$breakpoints: (
+  "sm": 640px,
+  "md": 768px,
+  "lg": 1024px,
+  "xl": 1280px // on anticipe un futur breakpoint
+);
+
+$containers: (
+  "default": (
+    "sm": 600px,
+    "md": 720px,
+    "lg": 960px
+  ),
+  "full": (
+    "sm": 800px,
+    "md": 1024px,
+    "lg": 1280px
+  ),
+  "lg": (
+    "sm": 640px,
+    "md": 900px,
+    "lg": 1120px
+  ),
+  "mini": (
+    "sm": 400px,
+    "md": 500px,
+    "lg": 600px
+  )
+);
