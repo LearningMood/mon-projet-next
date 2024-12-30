@@ -1,0 +1,68 @@
+@use "sass:map";
+$bandeau-heights: (
+  "20": (
+    "default": 150px,
+    "md": 180px,
+    "lg": 200px
+  ),
+  "40": (
+    "default": 400px,
+    "md": 450px,
+    "lg": 500px
+  ),
+  "60": (
+    "default": 60vh,
+    "md": 450px,
+    "lg": 500px
+  ),
+  "100": (
+    "default": 100vh
+  )
+);
+
+
+  @mixin generate-bandeau-heights($map) {
+    @each $name, $sizes in $map {
+      .bandeau--#{$name} {
+        height: map.get($sizes, "default");
+        min-height: map.get($sizes, "default");
+  
+        @if map.has-key($sizes, "md") {
+          @media (min-width: 768px) {
+            height: map.get($sizes, "md");
+            min-height: map.get($sizes, "md");
+          }
+        }
+  
+        @if map.has-key($sizes, "lg") {
+          @media (min-width: 1024px) {
+            height: map.get($sizes, "lg");
+            min-height: map.get($sizes, "lg");
+          }
+        }
+      }
+    }
+  }
+  
+@mixin bandeau($background, $height: auto) {
+    position: relative;
+    width: 100%;
+    height: $height;
+    background: $background;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    margin-bottom: 2rem;
+  }
+  .bandeau {
+    @include bandeau(tomato);
+  }
+  .bandeau--custom {
+    @include bandeau(url('/images/custom-banner.jpg'), 300px);
+  }
+  @include generate-bandeau-heights($bandeau-heights);

@@ -23,4 +23,15 @@
     /* Autres couleurs */
     --color-accent: #ff6b6b; /* Accentuation */
   }
+
+  $gradients: (
+  "primary-secondary": linear-gradient(to bottom right, #1e40af, #9333ea),
+  "light-dark": linear-gradient(to top, #f3f4f6, #111827)
+);
+
+@each $name, $value in $gradients {
+  .bbandeau--degrade-#{$name} {
+    background: #{$value};
+  }
+}
   

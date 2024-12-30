@@ -1,22 +1,19 @@
 import {BlocksRenderer} from "@strapi/blocks-react-renderer";
-import { getStrapiData } from "@/utils/strapi";
-// import styles from "./page.module.css";
+import { getStrapiData } from "@/services/strapi";
 import '@/styles/master.scss';
 
 export default async function Home() {
-  // const data = await getStrapiData('/api/homepage');
   const data = await getStrapiData('/api/homepage', { queryParams: { populate: '*' } });
-  console.log('Debug saleté de data :', data);
+  console.log('Data :', data);
   const content = data.data.content;
   const bandeau = data.data.bandeau.formats.medium.url;
 
   return (
     <div className="">
-      {/* <main className={styles.main}> */}
-      
-        <header className="container-full">
-          {/* <img src={`http://localhost:3000/api${bandeau}`} /> */}
-          <img src={`http://localhost:1337${bandeau}`} alt="" />
+        <header 
+          className="container-full bandeau bandeau--40"
+          style={{ backgroundImage: `url('http://localhost:1337${bandeau}')` }}
+        >
         </header>
 
         <main className="container">

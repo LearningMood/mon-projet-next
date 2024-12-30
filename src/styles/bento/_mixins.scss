@@ -5,7 +5,7 @@
       // Gérer le nom de la classe 
       @if ($container-name == "default") { // celui par défaut
         .container {
-          width: 100%;
+          width: 88%;
           margin: 0 auto;
           
           @each $bp-key, $max-width in $sizes {
