@@ -1,4 +1,5 @@
 import { getStrapiData } from '@/services/strapi';
+import Link from 'next/link';
 import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 
 
@@ -22,7 +23,10 @@ const notion = notionRes?.data?.[0];
   // const { title, content } = notion.attributes;
 
   return (
-    <div>
+    <div className="container">
+      <Link href={`/formations/${formationSlug}`} className="btn">
+        Retour formation
+      </Link>
       <h1>{notion.titre}</h1>
       <BlocksRenderer content={notion.content} />
     </div>

@@ -22,10 +22,10 @@ export default async function archiveFormations() {
           const { id, nomFormation, description, slug } = formation;
           return (
             <li key={id}>
-              <a href={`/formations/${slug}`}>
+              <Link href={`/formations/${slug}`}>
                 <h2>{nomFormation}</h2>
                 <p>{description}</p>
-              </a>
+              </Link>
             </li>
           );
         })}

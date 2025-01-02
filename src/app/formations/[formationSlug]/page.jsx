@@ -37,11 +37,14 @@ export default async function pageFormation({ params }) {
         <main className="container">
             <h1>Je suis la page Principale de la formation {formation.nomFormation}</h1>
             <h2>Ici, les notions : </h2>
+            <Link href={`/formations`} className="btn">
+                     Retour aux formations
+                </Link>
             <ul style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem' }}>
                 {notions.map((notion) => (
                     <Link
                         href={`/formations/${formationSlug}/notions/${notion.slug}`}
-                        // href={`/formation/${formationSlug}/notions/${notionSlug}`}
+                        key={notion.id}
                         style={{
                         display: 'block',
                         width: '300px',
