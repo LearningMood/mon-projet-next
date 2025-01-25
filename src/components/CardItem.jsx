@@ -1,5 +1,5 @@
 import Image from 'next/image';
-export default function CardItem({ slug, titre, description, imageFeat, formationName }) {
+export default function CardItem({ slug, titre, description, imageFeat, formationName, sections }) {
     return (
         <div>
             {imageFeat && (
@@ -19,6 +19,12 @@ export default function CardItem({ slug, titre, description, imageFeat, formatio
                 <span>{formationName}</span>
                 </p>
             </div>
+            {sections.map(section => (
+        <div key={section.id}>
+          <h4>{section.titreSection}</h4>
+          {/* etc. */}
+        </div>
+      ))}
         </div>
     );
 }

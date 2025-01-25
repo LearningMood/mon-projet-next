@@ -8,8 +8,8 @@ import CardItem from '@/components/CardItem';
 
 // Ici Page principale pour une formation donnée
 export default async function pageFormation({ params }) {
-    const { formationSlug } = params; // Je récupère le params comme filtre (ici le nom de la formation)
-    console.log("le Params de la page : ", params);
+    const { formationSlug, notionSlug } = params; // Je récupère le params comme filtre (ici le nom de la formation)
+    // console.log("le Params de la page : ", params);
 
     const formationRes = await getStrapiData('api/formations', {
       queryParams: {
@@ -60,7 +60,8 @@ export default async function pageFormation({ params }) {
                             titre={notion.titre}
                             description={notion.description}
                             imageFeat={`http://localhost:1337${notion.imageFeat.formats.thumbnail.url}`} 
-                            formationName="coucou"
+                            formationName={nomFormation}
+                            sections={notion.sections}
                         ></CardItem>
                     </Link>
                 ))}
