@@ -1,5 +1,8 @@
+// Pas fait - default pour pouvour être surchargé dans theme
+$primary-color: tomato !default;
+$secondary-color: #3498db !default;
 :root {
-    --color-one: #1e40af;
+    --color-one: #1e40af; 
     --color-one-light: #3b82f6;
     --color-one-dark: #1e3a8a;
   
@@ -30,8 +33,10 @@
 );
 
 @each $name, $value in $gradients {
-  .bbandeau--degrade-#{$name} {
+  .bandeau--degrade-#{$name} {
     background: #{$value};
   }
 }
+
+$background-color: #eee;
   

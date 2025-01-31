@@ -1,0 +1,10 @@
+@use '../variables/typo' as t;
+@each $tag, $size in t.$heading-sizes {
+    #{$tag} {
+      font-family: var(--font-title);
+      font-size: $size;
+      margin-bottom: 2rem;
+      letter-spacing: -1px;
+      line-height: .8;
+    }
+  }

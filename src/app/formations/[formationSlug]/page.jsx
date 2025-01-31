@@ -1,10 +1,11 @@
 
 import Link from 'next/link';
-import { getStrapiData } from '@/services/strapi';
-import { getNotionsByFormationSlug } from "@/services/getNotions";
-import { getExercisesByFormationSlug } from "@/services/getExercices"; 
-import { getSyntheseByFormationSlug } from "@/services/getSyntheses";
+import { getStrapiData } from '@/api/strapi';
+import { getNotionsByFormationSlug } from "@/api/getNotions";
+import { getExercisesByFormationSlug } from "@/api/getExercices"; 
+import { getSyntheseByFormationSlug } from "@/api/getSyntheses";
 import CardItem from '@/components/CardItem';
+import BtnBack from '@/components/BtnBackj';
 
 // Ici Page principale pour une formation donnée
 export default async function pageFormation({ params }) {
@@ -25,8 +26,6 @@ export default async function pageFormation({ params }) {
   
     const { nomFormation, description, createdAt, imageFeat } = formation;
 
-
-    
     // on fetch tout en parallèle :
     const notions = await getNotionsByFormationSlug(formationSlug);
 
@@ -35,11 +34,9 @@ export default async function pageFormation({ params }) {
 
     return (
         <main className="container">
+            <BtnBack label="Retour aux formations" fallback="/formations" />
             <h1>Je suis la page Principale de la formation {formation.nomFormation}</h1>
             <h2>Ici, les notions : </h2>
-            <Link href={`/formations`} className="btn">
-                     Retour aux formations
-                </Link>
             <ul style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem' }}>
                 {notions.map((notion) => (
                     <Link

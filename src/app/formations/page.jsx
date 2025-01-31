@@ -1,4 +1,5 @@
-import { getStrapiData } from '@/services/strapi';
+import Bandeau from '@/components/Bandeau';
+import { getStrapiData } from '@/api/strapi';
 export const revalidate = 60;
 import Link from 'next/link';
 
@@ -14,22 +15,23 @@ export default async function archiveFormations() {
   const formations = formationsRes?.data ?? []; // Accès direct à `data`
 
     return (
-        <section style={{ padding: '1rem' }}>
-      <h1>Liste des Formations</h1>
-      <ul>
-      {formations.map((formation) => {
-          // Accès direct aux propriétés
-          const { id, nomFormation, description, slug } = formation;
-          return (
-            <li key={id}>
-              <Link href={`/formations/${slug}`}>
-                <h2>{nomFormation}</h2>
-                <p>{description}</p>
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
-    </section>
+      <main className="container">
+        <h1>Liste des Formations</h1>
+        <Bandeau size="40" background="tomato" text="Bienvenue aux Formations" />
+        <ul>
+        {formations.map((formation) => {
+            // Accès direct aux propriétés
+            const { id, nomFormation, description, slug } = formation;
+            return (
+              <li key={id}>
+                <Link href={`/formations/${slug}`}>
+                  <h2>{nomFormation}</h2>
+                  <p>{description}</p>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      </main>
     )
 }

@@ -1,0 +1,26 @@
+$container-width: (
+  "default": (
+    "sm": 600px,
+    "md": 720px,
+    "lg": 960px,
+    "xl": 1120px
+  ),
+  "full": (
+    "sm": 800px,
+    "md": 1024px,
+    "lg": 1280px,
+    "xl": 1440px
+  ),
+  "large": (
+    "sm": 640px,
+    "md": 900px,
+    "lg": 1120px,
+    "xl": 1280px
+  ),
+  "mini": (
+    "sm": 400px,
+    "md": 500px,
+    "lg": 600px,
+    "xl": 720px
+  )
+);

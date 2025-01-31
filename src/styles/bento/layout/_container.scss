@@ -1,0 +1,6 @@
+// @use 'mixins' as m;
+@use "../variables/breakpoints" as bp;
+@use "../variables/container" as c ;
+@use "../mixins/make-container" as mc;
+
+@include mc.make-container(c.$container-width, bp.$breakpoints);

@@ -1,0 +1,6 @@
+// Pour surcharger d’éventuelles variables
+$custom-color: #ff6600; // je redéfinis 
+$cstom-secondary-color: #000099;
+// $primary-color sera remplacé par #ff6600 partout dans le framework (si !default est utilisé).
+
+@use './bento/bento' as bento;

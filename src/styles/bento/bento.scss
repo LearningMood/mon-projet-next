@@ -1,0 +1,20 @@
+// ’entry-point “tout compris” du framework. On l’importe une seule fois dans le projet pour avoir toute la base.
+// fichier principal qui applique des styles globaux (par exemple, body, h1, etc.) et fait @use './index' en interne.
+
+@use './reset';
+@use './index' as *;
+// Styles génériques basés sur les variables et mixins de bento
+body {
+  // font-family: $font-family;
+  background-color: $background-color;
+
+  background-color: var(--color-light);
+  color: var(--color-dark);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.8;
+  margin: 0;
+  padding: 2rem 0;
+}
+
+/* Autres styles initiaux, reset, etc. */

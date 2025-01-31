@@ -1,0 +1,9 @@
+// Point d’entrée global (importé par Next.js)
+@use './theme'; // => importe bento, plus mes surcharges de variables
+
+// Ajout de styles globaux custom
+html,
+body {
+  padding: 0;
+  margin: 0;
+}

@@ -1,11 +1,13 @@
-import { getStrapiData } from '@/services/strapi';
+import { getStrapiData } from '@/api/strapi';
 import Link from 'next/link';
 import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 import { notFound } from 'next/navigation';
+import BtnBack from '@/components/BtnBackj';
 // app/formations/[formationSlug]/notions/[notionSlug]/page.jsx
 
 // POUR INSOMNIA
 // http://localhost:1337/api/notions?filters[slug][$eq]=le-langage-de-la-couleur&filters[formations][slug][$eq]=culture-graphique&populate[0]=sections&populate[1]=sections.blocks
+// http://localhost:1337/api/notions?filters[slug][$eq]=le-langage-de-la-couleur&filters[formations][slug][$eq]=culture-graphique&populate[0]=sections&populate[1]=sections.blocks&populate[2]=sections.exercices&populate[3]=exercices
 export default async function NotionDetailPage({ params }) {
   const { formationSlug, notionSlug } = params;
 
@@ -20,6 +22,8 @@ export default async function NotionDetailPage({ params }) {
     populate: [
       'sections',         // équivalent à &populate[0]=sections
       'sections.blocks',  // équivalent à &populate[1]=sections.blocks
+      'sections.exercices', // ajout exercices associés à 1 section
+      'exercices', // ou exercice associés à 1 notion
     ],
   };
 
@@ -41,23 +45,30 @@ export default async function NotionDetailPage({ params }) {
 
   // Rendu de votre page
   return (
-    <div>
+    <main className="container">
+      <BtnBack label="Retour aux formations" fallback="/formations" />
+
       <h1>{notion?.titre}</h1>
       
-      {notion?.sections?.map(section => (
+      {notion?.sections?.map(section => {
+        // Récupérer l’array des exercices
+        const secExercices = section.exercices || []; // pas .data, c’est un array direct
 
+        return (
         <section key={section.id}>
           <h2>{section.titreSection}</h2>
           {section.blocks?.map(block => {
+            
             switch (block.__component) {
               case 'texte.titre':
                 return <h3 key={block.id}>{block.Titre} <small>Titre</small></h3>;
 
+              case 'media.image-simple':
+                return <h3 key={block.id}>Je suis une image</h3>;
+
               case 'texte.paragrapjhe':
-                // Attention à l'orthographe "paragrapjhe" qu'on voit dans vos data
                 return (
-                  <div>
-                    <h1>{formationSlug} <small>paragraphe</small></h1>
+                  <div key={block.id}>
                     <p key={block.id}>
                       {/* On simplifie l'extraction de "paragrapheRich" */}
                       {block.paragrapheRich?.[0]?.children?.[0]?.text}
@@ -69,10 +80,36 @@ export default async function NotionDetailPage({ params }) {
               default:
                 return null;
             }
-          })}
-          <hr></hr>
+          })} {/* // fin des blocks */}
+          {/* EX ASSOCIE A UNE SECTION */}
+          {/* Afficher les exercices de la section, si présents */}
+          {secExercices.length > 0 && (
+            <div>
+              <h3>Exercices pour cette section</h3>
+              <ul>
+                {secExercices.map(e => (
+                  <li key={e.id}>
+                    {/* JSON montre “titre”, pas "title" */}
+                    {e.titre}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </section>
-      ))}
-    </div>
+      )})}
+      <hr></hr>
+          {/* AJOUT EXERCICES NOTION EN FIN DE NOTION*/}
+          {notion.exercices?.length > 0 && (
+            <footer>
+              <h3>Exercices en fin de Notion :</h3>
+              <ul>
+                {notion.exercices.map(e => (
+                  <li key={e.id}>{e.titre}</li>
+                ))}
+              </ul>
+            </footer>
+          )}
+    </main>
   );
 }

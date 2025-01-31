@@ -1,0 +1,24 @@
+// = agrégateur ou un point central pour vos variables, mixins et autres ressources Sass. Son rôle principal est de réexporter ces ressources afin de simplifier leur importation dans d'autres fichiers Sass ou composants.
+// sert à réexporter toutes vos ressources. Il peut faire plein de @forward, par exemple :
+
+@forward 'variables/breakpoints';
+@forward 'variables/container';
+@forward 'variables/colors';
+@forward 'variables/spacing';
+@forward 'variables/typo';
+@forward 'mixins/grid-flex';
+@forward 'mixins/make-container';
+@forward 'mixins/grid';
+@forward 'mixins/divers';
+@forward 'layout/container';
+@forward 'typographics/paragraph';
+@forward 'typographics/heading';
+@forward 'typographics/list';
+@forward 'typographics/link';
+@forward 'components/bandeau';
+@forward 'components/button';
+@forward 'components/card';
+@forward 'components/diaporama';
+
+// Ainsi, depuis un autre fichier, je peux faire :
+// @use 'bento/_index' as bento;
