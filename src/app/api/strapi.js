@@ -7,7 +7,7 @@ import qs from 'qs';
  * @returns {string} URL complète (ex: http://localhost:1337/api/notions?populate=...)
  */
 function getStrapiURL(endpoint, queryParams = {}) {
-  const baseUrl = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337/';
+  const baseUrl = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
 
   const queryString = qs.stringify(queryParams, {
     encode: false, // ou encodeValuesOnly: true, selon votre besoin

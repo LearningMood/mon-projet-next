@@ -1,5 +1,5 @@
 import {BlocksRenderer} from "@strapi/blocks-react-renderer";
-import { getStrapiData } from "@/api/strapi";
+import { getStrapiData } from "@/app/api/strapi";
 
 export default async function Home() {
   const data = await getStrapiData('/api/homepage', { queryParams: { populate: '*' } });
