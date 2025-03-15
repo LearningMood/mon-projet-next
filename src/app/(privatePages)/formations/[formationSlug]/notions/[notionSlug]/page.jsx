@@ -1,4 +1,4 @@
-import { getStrapiData } from '@/app/api/strapi';
+import { getStrapiData } from '@/lib/strapi';
 import Link from 'next/link';
 import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 import { notFound } from 'next/navigation';

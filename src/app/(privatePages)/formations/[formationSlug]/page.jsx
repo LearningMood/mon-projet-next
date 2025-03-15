@@ -1,9 +1,9 @@
 
 import Link from 'next/link';
-import { getStrapiData } from '@/app/api/strapi';
-import { getNotionsByFormationSlug } from "@/app/lib/getNotions";
-import { getExercisesByFormationSlug } from "@/app/lib/getExercices"; 
-import { getSyntheseByFormationSlug } from "@/app/lib/getSyntheses";
+import { getStrapiData } from '@/lib/strapi';
+import { getNotionsByFormationSlug } from "@/lib/getNotions";
+import { getExercisesByFormationSlug } from "@/lib/getExercices"; 
+import { getSyntheseByFormationSlug } from "@/lib/getSyntheses";
 import CardItem from '@/components/CardItem';
 import BtnBack from '@/components/ui/BtnBack';
 

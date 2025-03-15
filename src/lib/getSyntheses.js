@@ -1,5 +1,5 @@
 // services/ficheService.js
-import { getStrapiData } from '@/app/api/strapi';
+import { getStrapiData } from '@/lib/strapi';
 
 export async function getSyntheseByFormationSlug(slug) {
   // Exemple : "fiche-synthese" est un single type qu’on récupère par rapport à la formation

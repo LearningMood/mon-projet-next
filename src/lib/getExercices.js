@@ -1,5 +1,5 @@
 // services/exerciseService.js
-import { getStrapiData } from '@/app/api/strapi';
+import { getStrapiData } from '@/lib/strapi';
 
 export async function getExercisesByFormationSlug(slug) {
   return await getStrapiData(`exercises?filters[formation][slug][$eq]=${slug}&populate=*`);

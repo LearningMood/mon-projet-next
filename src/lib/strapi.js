@@ -1,5 +1,8 @@
 import qs from 'qs';
+// un problème de double-slash ou d’absence de slash.
 
+// baseUrl = "http://localhost:1337" (sans slash final)
+// endpoint = "api/formations" (sans slash initial)
 function getStrapiURL(endpoint, queryParams = {}) {
   // On récupère l’URL de base
   let baseUrl = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';

@@ -1,4 +1,4 @@
-import { getStrapiData } from "@/app/api/strapi";
+import { getStrapiData } from "@/lib/strapi";
 
 export async function getNotionsByFormationSlug(slug) {
     //  type "notion" + une relation
