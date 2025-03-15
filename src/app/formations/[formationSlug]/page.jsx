@@ -1,11 +1,11 @@
 
 import Link from 'next/link';
-import { getStrapiData } from '@/api/strapi';
-import { getNotionsByFormationSlug } from "@/api/getNotions";
-import { getExercisesByFormationSlug } from "@/api/getExercices"; 
-import { getSyntheseByFormationSlug } from "@/api/getSyntheses";
+import { getStrapiData } from '@/app/api/strapi';
+import { getNotionsByFormationSlug } from "@/app/lib/getNotions";
+import { getExercisesByFormationSlug } from "@/app/lib/getExercices"; 
+import { getSyntheseByFormationSlug } from "@/app/lib/getSyntheses";
 import CardItem from '@/components/CardItem';
-import BtnBack from '@/components/BtnBackj';
+import BtnBack from '@/components/ui/BtnBack';
 
 // Ici Page principale pour une formation donnée
 export default async function pageFormation({ params }) {

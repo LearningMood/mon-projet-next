@@ -1,8 +1,8 @@
-import { getStrapiData } from '@/api/strapi';
+import { getStrapiData } from '@/app/api/strapi';
 import Link from 'next/link';
 import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 import { notFound } from 'next/navigation';
-import BtnBack from '@/components/BtnBackj';
+import BtnBack from '@/components/ui/BtnBack';
 // app/formations/[formationSlug]/notions/[notionSlug]/page.jsx
 
 // POUR INSOMNIA
