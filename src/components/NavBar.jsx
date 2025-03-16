@@ -11,6 +11,7 @@ import Link from "next/link";
 
 export default function NavBar() {
   const [user, setUser] = useState(null);
+  const [inscriptions, setInscriptions] = useState([]);
   const [formations, setFormations] = useState([]);
   const [error, setError] = useState("");
 
@@ -25,6 +26,7 @@ export default function NavBar() {
           return;
         }
         const data = await res.json();
+        console.log("Données utilisateur:", data); // Affiche les données user
         setUser(data.user);
       } catch (err) {
         console.error(err);
@@ -34,6 +36,8 @@ export default function NavBar() {
 
     fetchUser();
   }, []);
+
+// Pour charger toutes les formations (v1)
   useEffect(() => {
     async function fetchFormations() {
       const res = await fetch("/api/formations");
@@ -50,6 +54,35 @@ export default function NavBar() {
     fetchFormations();
   }, []);
 
+
+//   Pour n'afficher QUE les formations associées au user
+ // 4*) Appel de l'endpoint "inscriptions" (ou direct Strapi) quand on a user.id
+ useEffect(() => {
+    if (!user) return;
+
+    async function fetchInscriptions() {
+      try {
+        // Ex: /api/inscriptions?userId=1
+        // Ou direct => http://localhost:1337/api/inscriptions?filters[user][id][$eq]=<user.id>&populate=formation
+        const queryUrl = `/api/inscriptions?userId=${user.id}`;
+        const res = await fetch(queryUrl);
+        if (!res.ok) {
+          console.error("Erreur lors de la récupération des inscriptions");
+          return;
+        }
+        const data = await res.json();
+        console.log("Inscriptions de l'utilisateur:", data); // Affiche les inscriptions
+        setInscriptions(data.data || []); // Strapi renvoie { data: [...] }
+      } catch (err) {
+        console.error(err);
+        setError("Erreur lors du chargement des inscriptions");
+      }
+    }
+
+    fetchInscriptions();
+  }, [user]);
+
+  
   // Déconnexion
   async function handleLogout() {
     try {
@@ -77,16 +110,36 @@ export default function NavBar() {
       {user ? (
         // Utilisateur connecté
         <>
+        <span>Bonjour, {user.username || user.email}</span>
           <Link href="/dashboard">Tableau de bord</Link>
+
+{/* 4) Lister les formations depuis enrollments */}
+{inscriptions.map((inscription) => {
+            // Pour Strapi v4, c'est enrollment.attributes.formation.data.attributes
+            const formation = inscription?.formation;
+            if (!formation) return null;
+
+            const formationSlug = formation.slug || "";
+            return (
+              <Link key={inscription.id} href={`/formations/${formationSlug}`}>
+                {formation.title || formation.nomFormation}
+              </Link>
+            );
+          })}
+
+
+
           {/* Lister les formations autorisées */}
-          {formations.map((formation) => (
+          {/* {formations.map((formation) => (
             <Link
               key={formation.id}
               href={`/formations/${formation.slug}`}
             >
               {formation.nomFormation}
             </Link>
-          ))}
+          ))} */}
+
+
 
           <button onClick={handleLogout}>Déconnexion</button>
           {error && <span style={{ color: "red" }}>{error}</span>}
