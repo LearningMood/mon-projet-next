@@ -18,7 +18,7 @@ function getStrapiURL(endpoint, queryParams = {}) {
   }
 
   // On construit la query string
-  const queryString = qs.stringify(queryParams, { encode: false });
+  const queryString = qs.stringify(queryParams, { encode: true });
 
   // On renvoie l’URL complète
   return `${baseUrl}${endpoint}${queryString ? `?${queryString}` : ''}`;
