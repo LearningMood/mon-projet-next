@@ -19,12 +19,11 @@ export default function CardItem({ slug, titre, description, imageFeat, formatio
                 <span>{formationName}</span>
                 </p>
             </div>
-            {sections.map(section => (
-        <div key={section.id}>
-          <h4>{section.titreSection}</h4>
-          {/* etc. */}
-        </div>
-      ))}
+            {/* {sections.map(section => (
+                <div key={section.id}>
+                    <h4>{section.titreSection}</h4>
+                </div>
+            ))} */}
         </div>
     );
 }

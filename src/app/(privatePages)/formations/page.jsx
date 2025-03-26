@@ -1,5 +1,6 @@
 import Bandeau from '@/components/Bandeau';
 import { getStrapiData } from '@/lib/strapi';
+
 export const revalidate = 60;
 import Link from 'next/link';
 
