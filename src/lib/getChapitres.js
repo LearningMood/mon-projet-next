@@ -12,11 +12,14 @@ export async function getChapitresByFormationSlug(slug) {
 export async function getChapitresAndFichesByFormationSlug(formationSlug) {
     // On filtre sur la formation
     // On populate la relation "fiches" (et si besoin "fiches.sections", etc.)
-    // Limitation du populate (attentoin cycle)
+    // Limitation du populate (attention cycle)
     // Ici, on ne re‐popule pas le chapitre de chaque fiche.
 // Vous obtenez les champs de base de la fiche (id, titre, slug) sans repasser par la relation chapitre, donc plus de cycle.
     const response = await getStrapiData(
-      `api/chapitres?filters[formation][slug][$eq]=${formationSlug}&populate[fiches][populate]=sections`
+      // `api/chapitres?filters[formation][slug][$eq]=${formationSlug}&populate[fiches][populate]=sections`
+      // Ajout du populate imageFeat
+      `api/chapitres?filters[formation][slug][$eq]=${formationSlug}&populate[fiches][populate][0]=sections&populate[fiches][populate][1]=imageFeat`
+      // `api/chapitres?filters[formation][slug][$eq]=${formationSlug}&populate[fiches][populate][0]=sections&populate[fiches][populate][1]=imageFeat&populate[fiches][populate][2]=imageFeat.formats`
     );
     return response.data; // table des chapitres, chacun avec un champ .fiches
   }

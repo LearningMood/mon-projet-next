@@ -8,7 +8,7 @@ import { cookies } from 'next/headers';
 import NavBar from '@/components/NavBar';
   
   export default async function RootLayout({ children }) {
-    const cookieStore = cookies();// cookies() est désormais async, mais renvoie un objet utilisable
+    const cookieStore = await cookies();// cookies() est désormais async, mais renvoie un objet utilisable
     const token = cookieStore.get('token')?.value;
   // const token = cookies().get('token')?.value;
   return (

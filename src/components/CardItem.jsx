@@ -1,11 +1,7 @@
 import Image from 'next/image';
 export default function CardItem({ slug, titre, description, imageFeat, formationName, sections }) {
-    console.log("URL de l'imageFeat:", imageFeat?.formats?.thumbnail?.url);
-    console.log("URL complète:", `http://localhost:1337${imageFeat?.formats?.thumbnail?.url}`);
-
     return (
         <div>
-            <p>URL de l'image: {imageFeat}</p>
             {imageFeat && (
                 <Image
                 src={imageFeat}
@@ -23,11 +19,11 @@ export default function CardItem({ slug, titre, description, imageFeat, formatio
                 <span>{formationName}</span>
                 </p>
             </div>
-            {/* {sections.map(section => (
+            {sections.map(section => (
                 <div key={section.id}>
                     <h4>{section.titreSection}</h4>
                 </div>
-            ))} */}
+            ))}
         </div>
     );
 }

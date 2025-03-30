@@ -15,7 +15,7 @@ type FicheDetailPageProps = {
 // Là, je dois filtrer les fiches par leur slug et le slug du chapitre parent, et le slug de la formation parente de ce chapitre.
 // http://localhost:1337/api/fiches?filters[slug][$eq]=le-detourage-au-lasso&filters[chapitre][slug][$eq]=le-detourage&filters[chapitre][formation][slug][$eq]=photoshop-niv1&populate[0]=sections&populate[1]=sections.blocks
 export default async function FicheDetailPage({ params }: FicheDetailPageProps) {
-  const { formationSlug, chapitreSlug, ficheSlug } = params;
+   const { formationSlug, chapitreSlug, ficheSlug } = await params;
 
   /**
    * On suppose qu'en base Strapi, vous avez un modèle "fiche"

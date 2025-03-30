@@ -10,7 +10,7 @@ import BtnBack from '@/components/ui/BtnBack';
 
 // Ici Page principale pour une formation donnée
 export default async function pageFormation({ params }) {
-    const { formationSlug, notionSlug } = params; // Je récupère le params comme filtre (ici le nom de la formation)
+    const { formationSlug, notionSlug } = await params; // Je récupère le params comme filtre (ici le nom de la formation)
     // console.log("le Params de la page : ", params);
 
     const formationRes = await getStrapiData('api/formations', {
@@ -28,17 +28,17 @@ export default async function pageFormation({ params }) {
     const { nomFormation, description, createdAt, imageFeat } = formation;
 
     // on fetch tout en parallèle :
-    const notions = await getNotionsByFormationSlug(formationSlug);
+    // const notions = await getNotionsByFormationSlug(formationSlug);
     // const chapitres = await getChapitresByFormationSlug(formationSlug);
     const chapitres = await getChapitresAndFichesByFormationSlug(formationSlug);
 
-    console.log("Notions récupérées :", notions);
+    // console.log("Notions récupérées :", notions);
     console.log("Chapitres récupérés + fiches :", chapitres);
 
     return (
         <main className="container">
             <BtnBack label="Retour aux formations" fallback="/formations" />
-            <h1>Je suis la page Principale de la formation {formation.nomFormation}</h1>
+            <h1>Formation {formation.nomFormation}</h1>
 
             {/* 2) On boucle sur les chapitres */}
             {chapitres.map((chap) => {
@@ -72,7 +72,7 @@ export default async function pageFormation({ params }) {
                                     : 'http://localhost:1337/uploads/fallback-image.png'
                                   }
                                 formationName={nomFormation}
-                                // sections={fiche.sections}
+                                sections={fiche.sections}
                             ></CardItem>
                         </Link>
 
@@ -81,33 +81,6 @@ export default async function pageFormation({ params }) {
                 </div>
                 );
             })}
-            <h2>Ici, les notions : </h2>
-            <ul style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem' }}>
-                {notions.map((notion) => (
-                    <Link
-                        href={`/formations/${formationSlug}/notions/${notion.slug}`}
-                        key={notion.id}
-                        style={{
-                        display: 'block',
-                        width: '300px',
-                        border: '1px solid #ccc',
-                        borderRadius: 4,
-                        overflow: 'hidden',
-                        textDecoration: 'none',
-                        color: '#000',
-                        }}
-                    >
-                        <CardItem
-                            key={notion.id}
-                            titre={notion.titre}
-                            description={notion.description}
-                            imageFeat={`http://localhost:1337${notion.imageFeat.formats.thumbnail.url}`} 
-                            formationName={nomFormation}
-                            sections={notion.sections}
-                        ></CardItem>
-                    </Link>
-                ))}
-            </ul>
         </main>
     )
 }
