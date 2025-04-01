@@ -14,7 +14,7 @@ export default function CardItem({ slug, titre, description, imageFeat, formatio
             )}
             <div style={{ padding: '0.5rem' }}>
                 <h2>{titre}</h2>
-                <p>{description}</p>
+                {description && <p>{description}</p>}
                 <p style={{ fontStyle: 'italic', fontSize: '0.9rem' }}>
                 <span>{formationName}</span>
                 </p>

@@ -14,3 +14,18 @@ button {
     -ms-border-radius: 6px;
     -o-border-radius: 6px;
 }
+
+button.add-comment {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background: #fff;
+    color: var(--color-gris-moyen);
+    font-weight: bold;
+    font-size: 1.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: rgba(0, 0, 0, 0.09) 0px 4px 8px 0px, rgba(0, 0, 0, 0) 0px 1px 0px;
+
+}

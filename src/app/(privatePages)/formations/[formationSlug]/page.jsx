@@ -65,7 +65,7 @@ export default async function pageFormation({ params }) {
                             <CardItem
                                 key={fiche.id}
                                 titre={fiche.titre}
-                                // description={fiche.description}
+                                description={fiche.description}
                                 imageFeat={
                                     fiche.imageFeat?.formats?.thumbnail?.url
                                     ? `http://localhost:1337${fiche.imageFeat.formats.thumbnail.url}`

@@ -1,9 +1,10 @@
-export default BlockParagraphe = ({ paragraphe }) => {
+export default function BlockParagraphe ({ block }) {
     return (
-      <div>
-        {paragraphe.map((block, index) => (
-          <p key={index}>{block.children.map(child => child.text).join(' ')}</p>
-        ))}
+      <div key={block.id}>
+        <p key={block.id}>
+          {/* On simplifie l'extraction de "paragrapheRich" */}
+          {block.paragrapheRich?.[0]?.children?.[0]?.text}
+        </p>
       </div>
     );
   };
