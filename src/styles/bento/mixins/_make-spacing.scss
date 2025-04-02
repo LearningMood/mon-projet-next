@@ -29,4 +29,7 @@ $spacing-scale: (
   .pr-#{$name} { padding-right: $value; }
   .pb-#{$name} { padding-bottom: $value; }
   .pl-#{$name} { padding-left: $value; }
+
+  // Padding horizontaux
+  .ph-#{$name} { padding-left: $value; padding-right: $value }
 }

@@ -4,6 +4,7 @@ import BlockParagraphe from '@/components/blockComponents/BlockParagraphe';
 import BlockListe from '@/components/blockComponents/BlockListe';
 import BlockCarousel from '@/components/blockComponents/BlockCarousel';
 import BlockImage from '@/components/blockComponents/BlockImage';
+import Container from './blockComponents/Container';
 
 export default function FicheDetail({fiche, formationSlug, chapitreSlug, sections}) {
 
@@ -12,10 +13,12 @@ export default function FicheDetail({fiche, formationSlug, chapitreSlug, section
 
     return (
        <>
-       <div className="header-fiche">
-       <h1>{fiche.titre}</h1>
-        <small>Type de fiche : {fiche.typeFiche}</small>
-       </div>
+        <header>
+          <Container size="large" spacing="xsmall">
+              <h1>{fiche.titre}</h1>
+              <small>Type de fiche : {fiche.typeFiche}</small>
+          </Container>
+        </header>
 
       {sections.map((section: any) => {
         const secId = section.id; // ou section.__component si c’est géré différemment
@@ -42,7 +45,7 @@ export default function FicheDetail({fiche, formationSlug, chapitreSlug, section
                 return <BlockImage key={index} block={block} />
 
               case 'media.carousel':
-                return <BlockCarousel key={index}block={block} images={block.images} />
+                return <BlockCarousel key={index} block={block} images={block.images} />
 
               case 'texte.paragrapjhe':
                 return <BlockParagraphe key={index} block={block} />

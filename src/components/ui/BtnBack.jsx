@@ -15,7 +15,7 @@ export default function BtnBack({ label, fallback = '/formations' }) {
   };
 
   return (
-    <nav className="fil-ariane">
+    <nav className="fil-ariane container-large">
     <button onClick={handleBack} className="btn" aria-label={label}>
       {label}
     </button>

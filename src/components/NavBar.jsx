@@ -102,7 +102,7 @@ export default function NavBar() {
   }
 
   return (
-    <nav style={{ display: "flex", gap: "1rem", padding: "1rem" }}>
+    <nav className="main-nav">
 
       {/* Lien d'accueil toujours visible */}
       <Link href="/">Accueil</Link>

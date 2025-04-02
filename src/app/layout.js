@@ -15,7 +15,7 @@ import NavBar from '@/components/NavBar';
     <html lang="fr">
       <body>
         <NavBar isLogged={!!token} />
-        <main>{children}</main>
+        {children}
       </body>
     </html>
   )

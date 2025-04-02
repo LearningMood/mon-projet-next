@@ -22,7 +22,6 @@ export default function BlockCarousel({block, images}) {
     // console.log("Carousel : ", images);
     return (
         <Container size={block.size || "full"} >
-        {/* <div className="carousel-wrapper slider-container"> */}
             <Slider {...settings}>
                 {images && images.map((image, index)=> (
                     <div key={index}>

@@ -3,6 +3,7 @@ import BtnBack from '@/components/ui/BtnBack';
 import FicheDetail from '@/components/FicheDetail';
 import { getStrapiData } from '@/lib/strapi';
 import { BlocksRenderer } from '@strapi/blocks-react-renderer';
+import Container from '@/components/blockComponents/Container';
 
 
 type FichePageProps = {
@@ -86,7 +87,7 @@ export default async function FichePage({ params }: FichePageProps) {
   const sections = fiche.sections || [];
 
   return (
-    <main className="container">
+    <main>
       <BtnBack label="Retour au chapitre" fallback={`/formations/${formationSlug}/chapitres/${chapitreSlug}`} />
       <FicheDetail fiche={fiche} formationSlug={formationSlug} chapitreSlug={chapitreSlug} sections={sections} />
     </main>

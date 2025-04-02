@@ -3,7 +3,7 @@ export default function BlokListe ({block}) {
     const { type, items } = block;
     
     return (
-        <Container size="mini" spacing="xs">
+        <Container size="mini" spacing="xsmall">
             {type === 'puces' && (
                 <ul>
                     {items.map((item) => (

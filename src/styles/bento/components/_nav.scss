@@ -1,3 +1,12 @@
+nav.main-nav {
+    background-color: var(--color-dark);
+    color: var(--color-light);
+    display: flex;
+    gap: 1rem;
+    padding: 20px 40px;
+    margin-bottom: 2rem;
+}
+
 nav.fil-ariane{
     margin-bottom: 1rem;
 }

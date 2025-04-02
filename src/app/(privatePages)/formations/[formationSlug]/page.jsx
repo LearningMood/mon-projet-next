@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { getStrapiData } from '@/lib/strapi';
 import { getNotionsByFormationSlug } from "@/lib/getNotions";
 import { getChapitresByFormationSlug, getChapitresAndFichesByFormationSlug } from "@/lib/getChapitres";
+import Container from '@/components/blockComponents/Container';
 import { getExercisesByFormationSlug } from "@/lib/getExercices"; 
 import { getSyntheseByFormationSlug } from "@/lib/getSyntheses";
 import CardItem from '@/components/CardItem';
@@ -36,7 +37,7 @@ export default async function pageFormation({ params }) {
     console.log("Chapitres récupérés + fiches :", chapitres);
 
     return (
-        <main className="container">
+        <Container size="full" hSpacing="large">
             <BtnBack label="Retour aux formations" fallback="/formations" />
             <h1>Formation {formation.nomFormation}</h1>
 
@@ -45,9 +46,9 @@ export default async function pageFormation({ params }) {
                 const fiches = chap.fiches || []; // ex: array de fiches
 
                 return (
-                <div key={chap.id}>
+                    <Container size="small" key={chap.id}>
                     <h2>{chap.titre}</h2>
-                    <ul style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem' }}>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem' }}>
                         {fiches.map((fiche) => (
                             <Link
                             href={`/formations/${formationSlug}/chapitres/${chap.slug}/fiches/${fiche.slug}`}
@@ -77,10 +78,10 @@ export default async function pageFormation({ params }) {
                         </Link>
 
                         ))}
-                    </ul>
-                </div>
+                    </div>
+                </Container>
                 );
             })}
-        </main>
+        </Container>
     )
 }

@@ -9,23 +9,16 @@ export default async function Home() {
   const bandeau = data.data.bandeau.formats.medium.url;
 
   return (
-    <div className="">
-        <header 
-          className="container-full bandeau bandeau--40"
-          style={{ backgroundImage: `url('http://localhost:1337${bandeau}')` }}
-        >
-        </header>
-
-        <main className="container">
-          <BlocksRenderer content={content} />;
-          <ol>
-            <li>Save and see your changes instantly.</li>
-          </ol>
-
-         </main>
+    <>
+      <header 
+        className="bandeau bandeau--40 ph-md"
+        style={{ backgroundImage: `url('http://localhost:1337${bandeau}')` }}
+      >
+      </header>
+      <BlocksRenderer content={content} />;
       <footer className="">
         
       </footer>
-    </div>
+    </>
   );
 }
