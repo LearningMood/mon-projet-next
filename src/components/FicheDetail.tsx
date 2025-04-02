@@ -1,17 +1,21 @@
 import BtnAddComment from '@/components/ui/BtnAddComment';
 import BlockTitre from '@/components/blockComponents/BlockTitre';
-import BlockListe from '@/components/blockComponents/BlockListe';
-import BlockImage from '@/components/blockComponents/BlockImage';
 import BlockParagraphe from '@/components/blockComponents/BlockParagraphe';
+import BlockListe from '@/components/blockComponents/BlockListe';
+import BlockCarousel from '@/components/blockComponents/BlockCarousel';
+import BlockImage from '@/components/blockComponents/BlockImage';
 
 export default function FicheDetail({fiche, formationSlug, chapitreSlug, sections}) {
 
-    console.log("Les sections dans FicheDetail : ", sections);
+    // console.log("Les sections dans FicheDetail : ", sections);
+    console.log(fiche);
 
     return (
        <>
+       <div className="header-fiche">
        <h1>{fiche.titre}</h1>
-      <p>Type de fiche : {fiche.typeFiche}</p>
+        <small>Type de fiche : {fiche.typeFiche}</small>
+       </div>
 
       {sections.map((section: any) => {
         const secId = section.id; // ou section.__component si c’est géré différemment
@@ -20,23 +24,28 @@ export default function FicheDetail({fiche, formationSlug, chapitreSlug, section
 
         return (
           <section key={secId}>
-            <h2>{secTitle}</h2>
-            {blocks.map((block: any) => {
+            <div className="container-titre">
+              <h2>{secTitle}</h2>
+            </div>
+            {blocks.map((block: any, index ) => {
             
             switch (block.__component) {
               case 'texte.titre':
-                return <BlockTitre block={block} />
+                return <BlockTitre key={index} block={block} />
   
               
               case 'texte.liste': {
-                return <BlockListe block={block} />
+                return <BlockListe key={index} block={block} />
               };
 
               case 'media.image-simple':
-                return <BlockImage block={block} />
+                return <BlockImage key={index} block={block} />
+
+              case 'media.carousel':
+                return <BlockCarousel key={index}block={block} images={block.images} />
 
               case 'texte.paragrapjhe':
-                return <BlockParagraphe block={block} />
+                return <BlockParagraphe key={index} block={block} />
 
               default:
                 return null;

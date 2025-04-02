@@ -1,0 +1,32 @@
+// Définition de l'échelle de spacing
+$spacing-scale: (
+  none: 0,
+  xs: 20px,
+  sm: 36px,
+  md: 72px,
+  lg: 108px,
+  xl: 144px,
+  xxl: 180px
+);
+
+// Générer les classes pour une marge globale, + des marges et paddings directionnels
+@each $name, $value in $spacing-scale {
+  // Marges globales
+  .m-#{$name} {
+    margin: $value;
+  }
+  // Padding global
+  .p-#{$name} {
+    padding: $value;
+  }
+  // Marges / paddings directionnels
+  .mt-#{$name} { margin-top: $value; }
+  .mr-#{$name} { margin-right: $value; }
+  .mb-#{$name} { margin-bottom: $value; }
+  .ml-#{$name} { margin-left: $value; }
+
+  .pt-#{$name} { padding-top: $value; }
+  .pr-#{$name} { padding-right: $value; }
+  .pb-#{$name} { padding-bottom: $value; }
+  .pl-#{$name} { padding-left: $value; }
+}

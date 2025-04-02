@@ -8,6 +8,7 @@
 @forward 'variables/typo';
 @forward 'mixins/grid-flex';
 @forward 'mixins/make-container';
+@forward 'mixins/make-spacing';
 @forward 'mixins/grid';
 @forward 'mixins/divers';
 @forward 'layout/container';
@@ -20,6 +21,9 @@
 @forward 'components/button';
 @forward 'components/card';
 @forward 'components/diaporama';
+@forward 'components/image';
+@forward 'components/carousel';
+@forward 'layout/flex';
 
 // Ainsi, depuis un autre fichier, je peux faire :
 // @use 'bento/_index' as bento;

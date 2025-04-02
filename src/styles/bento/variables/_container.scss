@@ -1,15 +1,21 @@
 $container-width: (
-  "default": (
+  "default": ( // deviendra .conatiner (simple)
+    "sm": 100%,
+    "md": 800px,
+    "lg": 1296px,
+    "xl": 1296px
+  ),
+  "mini": (
+    "sm": 400px,
+    "md": 500px,
+    "lg": 600px,
+    "xl": 720px
+  ),
+  "medium": (
     "sm": 600px,
     "md": 720px,
-    "lg": 960px,
-    "xl": 1120px
-  ),
-  "full": (
-    "sm": 800px,
-    "md": 1024px,
-    "lg": 1280px,
-    "xl": 1440px
+    "lg": 920px,
+    "xl": 1000px
   ),
   "large": (
     "sm": 640px,
@@ -17,10 +23,18 @@ $container-width: (
     "lg": 1120px,
     "xl": 1280px
   ),
-  "mini": (
+  "full": (
+    "sm": 100%,
+    "md": 100%,
+    "lg": 100%,
+    "xl": 100%
+  ),
+  "titre": (
     "sm": 400px,
-    "md": 500px,
-    "lg": 600px,
-    "xl": 720px
+    "md": 540px,
+    "lg": 680px,
+    "xl": 840px
   )
 );
+
+// mini, medium,large, full

@@ -1,0 +1,19 @@
+.carousel-wrapper {
+    overflow: visible; /* Permet aux images de dépasser */
+    position: relative;
+  }
+  
+  /* Si nécessaire, ajustez le style de la liste interne de slick */
+  .carousel-wrapper .slick-list {
+    overflow: visible;
+  }
+  
+  .slick-slide {
+    // padding: 0 20px; /* Ajustez pour créer l'effet de débordement */
+  }
+  
+  .slide img {
+    width: 100%;
+    object-fit: cover;
+  }
+  

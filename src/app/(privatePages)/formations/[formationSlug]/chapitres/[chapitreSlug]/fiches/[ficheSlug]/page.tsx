@@ -49,6 +49,7 @@ export default async function FichePage({ params }: FichePageProps) {
       'sections.blocks.image',
       'sections.blocks.legende',
       'sections.blocks.images',
+      'sections.blocks.images.image',
       // si vous avez d'autres relations, par ex. un champ "exercices" directement sur la fiche, ajoutez-les ici
       // 'exercices',
     ],
@@ -72,7 +73,7 @@ export default async function FichePage({ params }: FichePageProps) {
   }
   
   console.log("Dans ma fiche, mes sections : ", fiche);
-  console.log("Dans ma fiche, les sections : ", fiche.blocks);
+  // console.log("Dans ma fiche, les sections : ", fiche.blocks);
 
   /**
    * Si vous avez un champ "nature" (ou "type") sur la fiche
